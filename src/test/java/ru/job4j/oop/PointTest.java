@@ -33,4 +33,22 @@ public class PointTest {
         double result = a.distance(b);
         Assert.assertEquals(expected, result, 0.0001);
     }
+
+    @Test
+    public void whenA000B003Then3() {
+        Point a = new Point(0, 0, 0);
+        Point b = new Point(0, 0, 3);
+        double expected = 3;
+        double result = a.distance3d(b);
+        Assert.assertEquals(expected, result, 0.0001);
+    }
+
+    @Test
+    public void whenA212B222Then1() {
+        Point a = new Point(2, 1, 2);
+        Point b = new Point(2, 2, 2);
+        double expected = 1;
+        double result = a.distance3d(b);
+        Assert.assertEquals(expected, result, 0.0001);
+    }
 }
