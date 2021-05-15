@@ -20,6 +20,14 @@ public class Item {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Item {" + "\n"
+                + " name = " + name + ";" + "\n"
+                + " id = " + id + ";" + "\n"
+                + "}";
+    }
+
     public LocalDateTime getCreated() {
         return created;
     }
