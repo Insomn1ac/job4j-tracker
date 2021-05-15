@@ -22,10 +22,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item {" + "\n"
-                + " name = " + name + ";" + "\n"
-                + " id = " + id + ";" + "\n"
-                + "}";
+        return "Item {" + " name = " + name + ";" + " id = " + id + " }";
     }
 
     public LocalDateTime getCreated() {

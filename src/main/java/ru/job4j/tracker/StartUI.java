@@ -4,7 +4,7 @@ public class StartUI {
 
     public static void main(String[] args) {
         Tracker tracker = new Tracker();
-        tracker.add(new Item(1, "test"));
+        tracker.add(new Item("test"));
         System.out.println(tracker.findById(1));
     }
 }
