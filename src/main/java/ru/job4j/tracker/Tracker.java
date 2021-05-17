@@ -18,16 +18,17 @@ public class Tracker {
         return index != -1 ? items[index] : null;
     }
 
-    public Item[] findAll(Item[] items, int size) {
+    public Item[] findAll() {
         return Arrays.copyOf(items, size);
     }
 
     public Item[] findByName(String key) {
         Item[] findName = new Item[size];
         int rsl = 0;
-        for (int i = 0; i < items.length; i++) {
-            if (key.equals(items[i].getName())) {
-                findName[rsl++] = items[i];
+        for (int i = 0; i < size; i++) {
+            Item name = items[i];
+            if (key.equals(name.getName())) {
+                findName[rsl++] = name;
             }
         }
         return Arrays.copyOf(findName, rsl);
