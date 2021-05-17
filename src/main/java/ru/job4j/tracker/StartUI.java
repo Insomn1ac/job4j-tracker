@@ -30,7 +30,6 @@ public class StartUI {
                 String userName = scanner.nextLine();
                 Item editItem = new Item();
                 editItem.setName(userName);
-                tracker.replace(userId, editItem);
                 if (tracker.replace(userId, editItem)) {
                     System.out.println("Item: " + userId + " was successfully changed to "
                             + editItem.getName());
@@ -41,9 +40,8 @@ public class StartUI {
                 System.out.println("=== Delete item ====");
                 System.out.println("Print item's ID: ");
                 int userId = Integer.parseInt(scanner.nextLine());
-                tracker.delete(userId);
                 boolean rsl = tracker.delete(userId);
-                if (!rsl) {
+                if (rsl) {
                     System.out.println("Item: " + userId + " was successfully deleted");
                 } else {
                     System.out.println("Item wasn't deleted");
