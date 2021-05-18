@@ -60,6 +60,18 @@ public class StartUI {
                 } else {
                     System.out.println("Cannot find item by ID: " + userId);
                 }
+            } else if (select == 5) {
+                System.out.println("=== Find items by name ===");
+                System.out.println("Enter name: ");
+                String userName = scanner.nextLine();
+                Item[] item = tracker.findByName(userName);
+                if (item.length > 0) {
+                    for (Item names : item) {
+                        System.out.println(names);
+                    }
+                } else {
+                    System.out.println("Cannot find item by name: " + userName);
+                }
             } else if (select == 6) {
                 run = false;
             }
