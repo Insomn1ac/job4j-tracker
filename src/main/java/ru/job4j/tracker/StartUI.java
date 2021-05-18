@@ -50,6 +50,16 @@ public class StartUI {
                     System.out.println("Cannot delete item with ID: " + userId
                             + ". Item doesn't exist in Tracker");
                 }
+            } else if (select == 4) {
+                System.out.println("=== Find item by id ===");
+                System.out.println("Enter ID: ");
+                int userId = Integer.parseInt(scanner.nextLine());
+                Item item = tracker.findById(userId);
+                if (item != null) {
+                    System.out.println(item);
+                } else {
+                    System.out.println("Cannot find item by ID: " + userId);
+                }
             } else if (select == 6) {
                 run = false;
             }
