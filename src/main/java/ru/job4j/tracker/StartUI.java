@@ -27,6 +27,19 @@ public class StartUI {
                 } else {
                     System.out.println("Tracker doesn't contain any items yet");
                 }
+            } else if (select == 2) {
+                System.out.println("Edit item: ");
+                System.out.println("Enter ID: ");
+                int userId = Integer.parseInt(scanner.nextLine());
+                System.out.println("Enter name: ");
+                String userName = scanner.nextLine();
+                Item item = new Item(userName);
+                if (tracker.replace(userId, item)) {
+                    System.out.println("Item successfully replaced");
+                } else {
+                    System.out.println("Cannot replace item with ID: " + userId
+                            + ". There is no such item in Tracker");
+                }
             } else if (select == 6) {
                 run = false;
             }
