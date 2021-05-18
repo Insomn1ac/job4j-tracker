@@ -28,7 +28,7 @@ public class StartUI {
                     System.out.println("Tracker doesn't contain any items yet");
                 }
             } else if (select == 2) {
-                System.out.println("Edit item: ");
+                System.out.println("=== Edit item ===");
                 System.out.println("Enter ID: ");
                 int userId = Integer.parseInt(scanner.nextLine());
                 System.out.println("Enter name: ");
@@ -39,6 +39,16 @@ public class StartUI {
                 } else {
                     System.out.println("Cannot replace item with ID: " + userId
                             + ". There is no such item in Tracker");
+                }
+            } else if (select == 3) {
+                System.out.println("=== Delete item ===");
+                System.out.println("Enter ID: ");
+                int userId = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(userId)) {
+                    System.out.println("Item successfully deleted");
+                } else {
+                    System.out.println("Cannot delete item with ID: " + userId
+                            + ". Item doesn't exist in Tracker");
                 }
             } else if (select == 6) {
                 run = false;
