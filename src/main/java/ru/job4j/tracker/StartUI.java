@@ -6,7 +6,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             showMenu();
-            int select = Integer.parseInt(input.askStr("Select: "));
+            int select = input.askInt("Select: ");
             if (select == 0) {
                 System.out.println("=== Create a new Item ===");
                 String name = input.askStr("Enter name: ");
@@ -25,7 +25,7 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit item ===");
-                int userId = Integer.parseInt(input.askStr("Enter ID: "));
+                int userId = input.askInt("Enter ID: ");
                 String userName = input.askStr("Enter name: ");
                 Item item = new Item(userName);
                 if (tracker.replace(userId, item)) {
@@ -36,7 +36,7 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete item ===");
-                int userId = Integer.parseInt(input.askStr("Enter ID: "));
+                int userId = input.askInt("Enter ID: ");
                 if (tracker.delete(userId)) {
                     System.out.println("Item successfully deleted");
                 } else {
@@ -45,7 +45,7 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by id ===");
-                int userId = Integer.parseInt(input.askStr("Enter ID: "));
+                int userId = input.askInt("Enter ID: ");
                 Item item = tracker.findById(userId);
                 if (item != null) {
                     System.out.println(item);
