@@ -38,7 +38,7 @@ public class StartUI {
                 System.out.println("=== Delete item ===");
                 int userId = input.askInt("Enter ID: ");
                 if (tracker.delete(userId)) {
-                    System.out.println("Item successfully deleted");
+                    System.out.println("Item " + userId + " was successfully deleted");
                 } else {
                     System.out.println("Cannot delete item with ID: " + userId
                             + ". Item doesn't exist in Tracker");
