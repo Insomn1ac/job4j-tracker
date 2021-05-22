@@ -3,9 +3,6 @@ package ru.job4j.tracker;
 import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.core.Is.is;
 import org.junit.Test;
-
-import java.time.format.DateTimeFormatter;
-
 import static org.junit.Assert.*;
 
 public class StartUITest {
@@ -100,10 +97,7 @@ public class StartUITest {
                         + "0. Find item by ID" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
                         + "=== Find item by id ===" + System.lineSeparator()
-                        + "Item{id=" + item.getId()
-                        + ", name='" + item.getName() + '\'' + ", created="
-                        + item.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-                        + '}' + System.lineSeparator()
+                        + item + System.lineSeparator()
                         + "Menu:" + System.lineSeparator()
                         + "0. Find item by ID" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
@@ -128,10 +122,7 @@ public class StartUITest {
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
                         + "=== Find items by name ===" + System.lineSeparator()
-                        + "Item{id=" + item.getId()
-                        + ", name='" + item.getName() + '\'' + ", created="
-                        + item.getCreated().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))
-                        + '}' + System.lineSeparator()
+                        + item + System.lineSeparator()
                         + "Menu:" + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
