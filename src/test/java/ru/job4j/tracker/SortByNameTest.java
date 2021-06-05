@@ -2,7 +2,6 @@ package ru.job4j.tracker;
 
 import org.junit.Test;
 
-import java.awt.event.ItemEvent;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
