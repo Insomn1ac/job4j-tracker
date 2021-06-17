@@ -30,7 +30,7 @@ public class FunctionalInterfaces {
         }
         Function<String, String> func = String::toUpperCase;
         for (String s : sup.get()) {
-            System.out.println(func.apply(s));
+            con.accept(func.apply(s));
         }
     }
 }
