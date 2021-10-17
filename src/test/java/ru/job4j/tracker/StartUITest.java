@@ -17,12 +17,12 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "Item name", "1"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
                 actions.add(new CreateAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findAll().get(0).getName(), is("Item name"));
+        assertEquals(tracker.findAll().get(0).getName(), ("Item name"));
     }
 
     @Test
@@ -31,12 +31,12 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0", "1"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
                 actions.add(new ShowAllAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(), (
                 "Menu:" + System.lineSeparator()
                         + "0. Show all items" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
@@ -51,7 +51,7 @@ public class StartUITest {
     @Test
     public void whenReplaceItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Replaced item"));
         String replaced = "New item";
         Input in = new StubInput(
@@ -61,13 +61,13 @@ public class StartUITest {
                 actions.add(new EditAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()).getName(), is(replaced));
+        assertEquals(tracker.findById(item.getId()).getName(), (replaced));
     }
 
     @Test
     public void whenDeleteItem() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("Deleted item"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -76,13 +76,13 @@ public class StartUITest {
                 actions.add(new DeleteAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.getId()), is(nullValue()));
+        assertEquals(tracker.findById(item.getId()), (nullValue()));
     }
 
     @Test
     public void whenFindById() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("New"));
         Input in = new StubInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
@@ -91,7 +91,7 @@ public class StartUITest {
                 actions.add(new FindByIdAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(), (
                 "Menu:" + System.lineSeparator()
                         + "0. Find item by ID" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
@@ -106,7 +106,7 @@ public class StartUITest {
     @Test
     public void whenFindByName() {
         Output out = new StubOutput();
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         Item item = tracker.add(new Item("New"));
         Input in = new StubInput(
                 new String[] {"0", item.getName(), "1"}
@@ -115,7 +115,7 @@ public class StartUITest {
                 actions.add(new FindByNameAction(out));
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(), (
                 "Menu:" + System.lineSeparator()
                         + "0. Find items by name" + System.lineSeparator()
                         + "1. Exit" + System.lineSeparator()
@@ -133,11 +133,11 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(), (
                 "Menu:" + System.lineSeparator()
                         + "0. Exit" + System.lineSeparator()
         ));
@@ -149,12 +149,12 @@ public class StartUITest {
         Input in = new StubInput(
                 new String[] {"1", "0"}
         );
-        Tracker tracker = new Tracker();
+        Store tracker = new SqlTracker();
         List<UserAction> actions = new ArrayList<>();
                 actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is(
+        assertEquals(out.toString(), (
                 "Menu:" + ln
                         + "0. Exit" + ln
                         + "Wrong input, you can select: 0 .. 0" + ln
