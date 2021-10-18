@@ -2,6 +2,7 @@ package ru.job4j.tracker;
 
 import java.io.InputStream;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -56,11 +57,11 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean rsl = false;
         try (PreparedStatement statement =
-                     cn.prepareStatement("update items set name = ? where id = ?")) {
+                     cn.prepareStatement("update items set name = ?, created = ? where id = ?")) {
             statement.setString(1, item.getName());
-            statement.setInt(2, id);
             statement.setTimestamp(
-                    3, Timestamp.valueOf(String.valueOf(System.currentTimeMillis())));
+                    2, Timestamp.valueOf(LocalDateTime.now()));
+            statement.setInt(3, id);
             rsl = statement.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,7 +129,7 @@ public class SqlTracker implements Store {
                      cn.prepareStatement("select * from items where id = ?")) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
+                if (resultSet.next()) {
                     item = (new Item(
                             resultSet.getInt("id"),
                             resultSet.getString("name"),
