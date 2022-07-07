@@ -6,8 +6,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-import javax.persistence.Query;
-import java.util.ArrayList;
 import java.util.List;
 
 public class HbmTracker implements Store, AutoCloseable {
@@ -63,13 +61,10 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public List<Item> findAll() {
-        List<Item> items = new ArrayList<>();
+        List items;
         try (Session session = sf.openSession()) {
             session.beginTransaction();
-            Query query = session.createQuery("from Item");
-            for (Object item : query.getResultList()) {
-                items.add((Item) item);
-            }
+            items = session.createQuery("from Item").getResultList();
             session.getTransaction().commit();
         }
         return items;
@@ -77,14 +72,11 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public List<Item> findByName(String key) {
-        List<Item> items = new ArrayList<>();
+        List items;
         try (Session session = sf.openSession()) {
             session.beginTransaction();
-            Query query = session.createQuery("from Item i where i.name = :fName")
-                    .setParameter("fName", key);
-            for (Object item : query.getResultList()) {
-                items.add((Item) item);
-            }
+            items = session.createQuery("from Item i where i.name = :fName")
+                    .setParameter("fName", key).getResultList();
             session.getTransaction().commit();
         }
         return items;
