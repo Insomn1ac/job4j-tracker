@@ -1,10 +1,8 @@
 package ru.job4j.search;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PhoneDictionaryTest {
 
@@ -15,7 +13,7 @@ public class PhoneDictionaryTest {
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
         var persons = phones.find("Petr");
-        assertThat(persons.get(0).getSurname(), is("Arsentev"));
+        assertThat(persons.get(0).getSurname()).isEqualTo("Arsentev");
     }
 
     @Test
@@ -25,7 +23,7 @@ public class PhoneDictionaryTest {
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
         var persons = phones.find("Arsentev");
-        assertThat(persons.get(0).getName(), is("Petr"));
+        assertThat(persons.get(0).getName()).isEqualTo("Petr");
     }
 
     @Test
@@ -35,7 +33,7 @@ public class PhoneDictionaryTest {
                 new Person("Elon", "Musk", "1234567", "San Francisco")
         );
         var persons = phones.find("1234567");
-        assertThat(persons.get(0).getAddress(), is("San Francisco"));
+        assertThat(persons.get(0).getAddress()).isEqualTo("San Francisco");
     }
 
     @Test
@@ -45,7 +43,7 @@ public class PhoneDictionaryTest {
                 new Person("Elon", "Musk", "1234567", "San Francisco")
         );
         var persons = phones.find("San Francisco");
-        assertThat(persons.get(0).getName(), is("Elon"));
+        assertThat(persons.get(0).getName()).isEqualTo("Elon");
     }
 
     @Test
@@ -55,6 +53,6 @@ public class PhoneDictionaryTest {
                 new Person("Ivan", "Ivanov", "2345678", "Moscow")
         );
         var persons = phones.find("Kaluga");
-        assertTrue(persons.isEmpty());
+        assertThat(persons.isEmpty()).isTrue();
     }
 }
